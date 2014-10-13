@@ -1,0 +1,37 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  RunRailsCops: true
+  Include:
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/*.rake'
+  Exclude:
+    - db/schema.rb
+    - db/security/schema.rb
+    - db/migrate/*
+    - bin/*
+
+Style/AlignArray:
+  Enabled: true
+
+Style/AsciiComments:
+  Enabled: true
+
+Style/EmptyLines:
+  Enabled: true
+
+Style/SpaceBeforeBlockBraces:
+  Enabled: true
+
+Style/SpaceInsideBrackets:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+
+Style/TrailingBlankLines:
+  Enabled: true
+
+Style/TrailingWhitespace:
+  Enabled: true
