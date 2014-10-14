@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014125526) do
+ActiveRecord::Schema.define(version: 20141014164919) do
+
+  create_table "reports", force: true do |t|
+    t.string   "first_entry"
+    t.string   "first_exit"
+    t.string   "second_entry"
+    t.string   "second_exit"
+    t.string   "remote"
+    t.date     "day"
+    t.boolean  "away",         default: false
+    t.text     "notice"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
