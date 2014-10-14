@@ -7,5 +7,26 @@
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
+    <ul class="sidebar-menu">
+      <li class="treeview active">
+        <a href="javascript:;">
+          <i class="fa fa-calendar"></i>
+          <span>Reporte de Horas</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <%= link_to reports_path do %>
+              <i class="fa fa-angle-double-right"></i> Listagem
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_report_path do %>
+              <i class="fa fa-angle-double-right"></i> Novo apontamento
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </section>
 </aside>

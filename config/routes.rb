@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   authenticate :user do
     root 'dashboards#index'
+
+    resources :reports
   end
 end
