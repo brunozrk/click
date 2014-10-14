@@ -1,0 +1,41 @@
+<div class="form-box" id="login-box">
+  <div class="header">Cadastro</div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="body bg-gray">
+
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email'  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :first_name, class: 'form-control', placeholder: 'Nome'  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :last_name, class: 'form-control', placeholder: 'Sobrenome'  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Password Confirmation' %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="form-group">
+          <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+    </div>
+
+    <div class="footer">
+      <%= f.submit "Cadastro", class: 'btn bg-olive btn-block' %>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>

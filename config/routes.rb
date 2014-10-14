@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  root 'dashboards#index'
+  devise_for :users, controllers: { registrations: 'registrations' }
+
+  authenticate :user do
+    root 'dashboards#index'
+  end
 end
