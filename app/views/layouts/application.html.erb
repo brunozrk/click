@@ -2,13 +2,21 @@
 <html>
 <head>
   <title>Click</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="skin-blue">
 
-<%= yield %>
+<%= render 'layouts/header' %>
 
+  <div class="wrapper row-offcanvas row-offcanvas-left">
+
+    <%= render 'layouts/menu' %>
+
+    <aside class="right-side">
+      <%= yield %>
+    </aside>
+  </div>
 </body>
 </html>
