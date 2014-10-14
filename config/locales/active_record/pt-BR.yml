@@ -10,3 +10,4 @@ pt-BR:
         last_name: Sobrenome
         password: Senha
         password_confirmation: Confirmação de Senha
+        current_password: Senha Atual
