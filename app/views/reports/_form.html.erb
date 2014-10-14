@@ -1,0 +1,44 @@
+<section class="content-header">
+  <h1>Reporte de horas</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-danger">
+        <div class="box-header">
+          <h3 class="box-title">14/10/2014</h3>
+        </div>
+        <%= form_for @report do |f| %>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <label>Primeira Entrada</label>
+              <%= f.text_field :first_entry, class: 'form-control timepicker' %>
+            </div>
+            <div class="col-xs-2">
+              <label>Primeira Saída</label>
+              <%= f.text_field :first_exit, class: 'form-control' %>
+            </div>
+            <div class="col-xs-2">
+              <label>Segunda Entrada</label>
+              <%= f.text_field :second_entry, class: 'form-control' %>
+            </div>
+            <div class="col-xs-2">
+              <label>Seguda Saída</label>
+              <%= f.text_field :second_exit, class: 'form-control' %>
+            </div>
+            <div class="col-xs-2">
+              <label>Tempo Remoto</label>
+              <%= f.text_field :remote, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <%= f.submit "Salvar", class: 'btn btn-primary' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
