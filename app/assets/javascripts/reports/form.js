@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  //Timepicker
   $(".timepicker").timepicker({
     showMeridian: false,
     showInputs: false,

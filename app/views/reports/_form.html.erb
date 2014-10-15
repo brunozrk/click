@@ -9,49 +9,38 @@
         <div class="box-header">
           <h3 class="box-title">Apontamento</h3>
         </div>
-        <%= form_for @report do |f| %>
-        <div class="box-body content">
-          <div class="col-xs-2 form-group bootstrap-timepicker">
-            <label>Primeira Entrada</label>
-            <%= f.text_field :first_entry, class: 'form-control timepicker' %>
-          </div>
-          <div class="col-xs-2 form-group bootstrap-timepicker">
-            <label>Primeira Saída</label>
-            <%= f.text_field :first_exit, class: 'form-control timepicker' %>
-          </div>
-          <div class="col-xs-2 form-group bootstrap-timepicker">
-            <label>Segunda Entrada</label>
-            <%= f.text_field :second_entry, class: 'form-control timepicker' %>
-          </div>
-          <div class="col-xs-2 form-group bootstrap-timepicker">
-            <label>Seguda Saída</label>
-            <%= f.text_field :second_exit, class: 'form-control timepicker' %>
-          </div>
-          <div class="col-xs-2 form-group bootstrap-timepicker">
-            <label>Tempo Remoto</label>
-            <%= f.text_field :remote, class: 'form-control timepicker' %>
-          </div>
-          <div class="col-xs-10 form-group">
-            <label>Observações</label>
-            <%= f.text_area :notice, class: 'form-control' %>
-          </div>
-          <div class="col-xs-5 form-group">
-            <label>Dia</label>
-            <%= f.text_field :day, class: 'form-control datepicker',
-                                   autocomplete: :off,
-                                   value: @report.day.try(:strftime, "%m/%d/%Y")  %>
-          </div>
 
-          <div class="col-xs-5 form-group">
-            <div class="form-group">
-              <label>Faltou?</label>
-              <%= f.select :away, [['Sim', true], ['Não', false]], {} , { class: 'form-control' } %>
-            </div>
+        <%= simple_form_for @report, wrapper: :vertical_form do |f| %>
+          <div class="box-body content">
+            <%= f.input :first_entry , wrapper_html: { class: 'col-xs-2 bootstrap-timepicker' },
+                                       input_html: { class: 'timepicker' } %>
+
+            <%= f.input :first_exit , wrapper_html: { class: 'col-xs-2 bootstrap-timepicker' },
+                                       input_html: { class: 'timepicker' } %>
+
+            <%= f.input :second_entry , wrapper_html: { class: 'col-xs-2 bootstrap-timepicker' },
+                                       input_html: { class: 'timepicker' } %>
+
+            <%= f.input :second_exit , wrapper_html: { class: 'col-xs-2 bootstrap-timepicker' },
+                                       input_html: { class: 'timepicker' } %>
+
+            <%= f.input :remote , wrapper_html: { class: 'col-xs-2 bootstrap-timepicker' },
+                                  input_html: { class: 'timepicker' } %>
+
+            <%= f.input :notice, wrapper_html: { class: 'col-xs-10'} %>
+
+            <%= f.input :day, wrapper_html: { class: 'col-xs-5'},
+                              input_html: { class: 'datepicker', autocomplete: 'off' },
+                              as: :string %>
+
+            <%= f.input :away, collection: { 'Sim' => true, 'Não' => false},
+                               include_blank: false,
+                               wrapper_html: { class: 'col-xs-5'} %>
+
           </div>
-        </div>
-        <div class="box-footer">
-          <%= f.submit "Salvar", class: 'btn btn-primary' %>
-        </div>
+          <div class="box-footer">
+            <%= f.button :submit, 'Salvar', class: 'btn-primary' %>
+          </div>
         <% end %>
       </div>
     </div>
