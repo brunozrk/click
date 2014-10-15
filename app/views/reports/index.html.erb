@@ -19,6 +19,8 @@
                     <th>Segunda Entrada</th>
                     <th>Segunda Saída</th>
                     <th>Remoto</th>
+                    <th>Total</th>
+                    <th>Saldo</th>
                     <th>Ações</th>
                   </tr>
               </thead>
@@ -31,6 +33,8 @@
                   <td><%= r.second_entry %></td>
                   <td><%= r.second_exit %></td>
                   <td><%= r.remote %></td>
+                  <td><%= total(r) %></td>
+                  <td><%= balance(r) %></td>
                   <td>
                     <%= link_to edit_report_path(r) do %>
                       <i class="fa fa-edit"></i>
