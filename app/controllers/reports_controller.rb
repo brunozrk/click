@@ -39,6 +39,15 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:first_entry, :first_exit, :second_entry, :second_exit, :remote)
+    params.require(:report).permit(
+      :first_entry,
+      :first_exit,
+      :second_entry,
+      :second_exit,
+      :remote,
+      :notice,
+      :day,
+      :away
+    )
   end
 end

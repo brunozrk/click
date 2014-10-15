@@ -7,30 +7,45 @@
     <div class="col-md-6">
       <div class="box box-danger">
         <div class="box-header">
-          <h3 class="box-title">14/10/2014</h3>
+          <h3 class="box-title">Apontamento</h3>
         </div>
         <%= form_for @report do |f| %>
-        <div class="box-body">
-          <div class="row">
-            <div class="col-xs-2">
-              <label>Primeira Entrada</label>
-              <%= f.text_field :first_entry, class: 'form-control timepicker' %>
-            </div>
-            <div class="col-xs-2">
-              <label>Primeira Saída</label>
-              <%= f.text_field :first_exit, class: 'form-control' %>
-            </div>
-            <div class="col-xs-2">
-              <label>Segunda Entrada</label>
-              <%= f.text_field :second_entry, class: 'form-control' %>
-            </div>
-            <div class="col-xs-2">
-              <label>Seguda Saída</label>
-              <%= f.text_field :second_exit, class: 'form-control' %>
-            </div>
-            <div class="col-xs-2">
-              <label>Tempo Remoto</label>
-              <%= f.text_field :remote, class: 'form-control' %>
+        <div class="box-body content">
+          <div class="col-xs-2 form-group bootstrap-timepicker">
+            <label>Primeira Entrada</label>
+            <%= f.text_field :first_entry, class: 'form-control timepicker' %>
+          </div>
+          <div class="col-xs-2 form-group bootstrap-timepicker">
+            <label>Primeira Saída</label>
+            <%= f.text_field :first_exit, class: 'form-control timepicker' %>
+          </div>
+          <div class="col-xs-2 form-group bootstrap-timepicker">
+            <label>Segunda Entrada</label>
+            <%= f.text_field :second_entry, class: 'form-control timepicker' %>
+          </div>
+          <div class="col-xs-2 form-group bootstrap-timepicker">
+            <label>Seguda Saída</label>
+            <%= f.text_field :second_exit, class: 'form-control timepicker' %>
+          </div>
+          <div class="col-xs-2 form-group bootstrap-timepicker">
+            <label>Tempo Remoto</label>
+            <%= f.text_field :remote, class: 'form-control timepicker' %>
+          </div>
+          <div class="col-xs-10 form-group">
+            <label>Observações</label>
+            <%= f.text_area :notice, class: 'form-control' %>
+          </div>
+          <div class="col-xs-5 form-group">
+            <label>Dia</label>
+            <%= f.text_field :day, class: 'form-control datepicker',
+                                   autocomplete: :off,
+                                   value: @report.day.try(:strftime, "%m/%d/%Y")  %>
+          </div>
+
+          <div class="col-xs-5 form-group">
+            <div class="form-group">
+              <label>Faltou?</label>
+              <%= f.select :away, [['Sim', true], ['Não', false]], {} , { class: 'form-control' } %>
             </div>
           </div>
         </div>
@@ -42,3 +57,7 @@
     </div>
   </div>
 </div>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "reports/form.js" %>
+<% end %>
