@@ -33,8 +33,8 @@
                   <td><%= r.second_entry %></td>
                   <td><%= r.second_exit %></td>
                   <td><%= r.remote %></td>
-                  <td><%= total(r) %></td>
-                  <td><%= balance(r) %></td>
+                  <td><%= hour_minute(r.worked) %></td>
+                  <td><%= sign(r.balance) %></td>
                   <td>
                     <%= link_to edit_report_path(r) do %>
                       <i class="fa fa-edit"></i>
