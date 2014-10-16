@@ -19,12 +19,10 @@ module ReportHelper
   end
 
   def worked(report)
-    first_entry, first_exit, second_entry, second_exit = report_values(report)
-
+    first_entry, first_exit, second_entry, second_exit, remote = report_values(report)
     first_total = time_diff(first_entry, first_exit)
     secont_total = time_diff(second_entry, second_exit)
-
-    first_total + secont_total
+    first_total + secont_total + remote
   end
 
   def time_diff(entry, exit)
@@ -40,7 +38,8 @@ module ReportHelper
       timeit(report.first_entry),
       timeit(report.first_exit),
       timeit(report.second_entry),
-      timeit(report.second_exit)
+      timeit(report.second_exit),
+      timeit(report.remote).seconds_since_midnight
     ]
   end
 
