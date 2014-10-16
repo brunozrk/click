@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20141014164919) do
     t.string   "first_exit"
     t.string   "second_entry"
     t.string   "second_exit"
-    t.string   "remote"
+    t.string   "remote",       default: "0"
     t.date     "day"
     t.boolean  "away",         default: false
     t.text     "notice"

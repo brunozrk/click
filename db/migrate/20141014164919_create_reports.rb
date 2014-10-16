@@ -5,7 +5,7 @@ class CreateReports < ActiveRecord::Migration
       t.string :first_exit
       t.string :second_entry
       t.string :second_exit
-      t.string :remote
+      t.string :remote, default: 0
 
       t.date :day
 
