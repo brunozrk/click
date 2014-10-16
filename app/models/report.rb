@@ -3,7 +3,7 @@ class Report < ActiveRecord::Base
 
   validates :day, presence: true
 
-  validates :day, uniqueness: true
+  validates :day, uniqueness: { scope: :user_id }
 
   default_scope { order('day DESC') }
 end
