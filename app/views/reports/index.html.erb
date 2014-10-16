@@ -27,7 +27,7 @@
               <tbody>
                 <% @reports.each do |r|%>
                 <tr>
-                  <td><%= r.day %></td>
+                  <td><%= r.day.strftime('%d/%m/%Y') %></td>
                   <td><%= r.first_entry %></td>
                   <td><%= r.first_exit %></td>
                   <td><%= r.second_entry %></td>
