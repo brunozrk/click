@@ -9,33 +9,19 @@
         <div class="box-header">
           <h3 class="box-title">Meus Dados</h3>
         </div>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= simple_form_for resource, as: resource_name,
+                                      url: registration_path(resource_name),
+                                      html: { method: :put },
+                                      wrapper: :vertical_form do |f| %>
           <div class="box-body">
             <%= devise_error_messages! %>
-            <div class="form-group">
-              <label>Email</label>
-              <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <label>Nome</label>
-              <%= f.text_field :first_name, class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <label>Sobrenome</label>
-              <%= f.text_field :last_name, class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <label>Senha</label>
-              <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <label>Confirmação de Senha</label>
-              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <label>Senha Atual</label>
-              <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
-            </div>
+
+            <%= f.input :email %>
+            <%= f.input :first_name %>
+            <%= f.input :last_name %>
+            <%= f.input :password %>
+            <%= f.input :password_confirmation %>
+            <%= f.input :current_password %>
           </div>
 
           <div class="box-footer">
