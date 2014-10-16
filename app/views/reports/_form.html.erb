@@ -30,7 +30,7 @@
             <%= f.input :notice, wrapper_html: { class: 'col-xs-10'} %>
 
             <%= f.input :day, wrapper_html: { class: 'col-xs-5'},
-                              input_html: { class: 'datepicker', autocomplete: 'off' },
+                              input_html: { class: 'datepicker', autocomplete: 'off', value: @report.day.try(:strftime, "%d/%m/%Y")  },
                               as: :string %>
 
             <%= f.input :away, collection: { 'Sim' => true, 'Não' => false},
