@@ -1,7 +1,7 @@
 class Report < ActiveRecord::Base
   belongs_to :user
 
-  validates :day, presence: true
+  validates :day, :remote, presence: true
 
   validates :day, uniqueness: { scope: :user_id }
 
