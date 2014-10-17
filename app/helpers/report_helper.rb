@@ -1,13 +1,20 @@
 module ReportHelper
   def sign(balance)
     if balance[:sign]
-      "<span class='text-green'>+ #{hour_minute(balance[:time])}</span>".html_safe
+      balance_html(balance[:time], 'green', 'plus')
     else
-      "<span class='text-red'>- #{hour_minute(balance[:time])}</span>".html_safe
+      balance_html(balance[:time], 'red', 'minus')
     end
   end
 
   def hour_minute(worked)
     Time.at(worked).gmtime.strftime('%H:%M')
+  end
+
+  def balance_html(time, color, icon)
+    "<span class='text-#{color}'>
+      <i class='fa fa-fw fa-#{icon}-circle'></i>
+      #{hour_minute(time)}
+    </span>".html_safe
   end
 end
