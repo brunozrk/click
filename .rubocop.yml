@@ -35,3 +35,6 @@ Style/TrailingBlankLines:
 
 Style/TrailingWhitespace:
   Enabled: true
+
+Rails/Output:
+  Enabled: false
