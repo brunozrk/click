@@ -46,4 +46,8 @@ class RegistrationsController < Devise::RegistrationsController
       u.permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :current_password)
     end
   end
+
+  def after_inactive_sign_up_path_for(_resource)
+    success_path
+  end
 end
