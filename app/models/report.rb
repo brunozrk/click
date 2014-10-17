@@ -5,6 +5,10 @@ class Report < ActiveRecord::Base
 
   validates :day, uniqueness: { scope: :user_id }
 
+  validate :validate_entry_exit_order
+
+  before_save
+
   default_scope { order('day DESC') }
 
   def worked
@@ -14,14 +18,36 @@ class Report < ActiveRecord::Base
   end
 
   def balance
-    if 8.hour > worked
-      { time: 8.hour - worked, sign: true }
+    if away
+      { time: 8.hour, sign: false }
+    elsif 8.hour > worked
+      { time: 8.hour - worked, sign: false }
     else
-      { time: worked - 8.hour, sign: false }
+      { time: worked - 8.hour, sign: true }
     end
   end
 
   private
+
+  def validate_entry_exit_order
+    return unless any_higher?(first_entry, 3) ||
+                  any_higher?(first_exit, 2) ||
+                  any_higher?(second_entry, 1)
+    errors.add(:base, 'Sequência de entrada/saída inválida')
+  end
+
+  def any_higher?(value, lasts)
+    (times.last(lasts).compact).any? { |x| x < timeit(value) }
+  end
+
+  def times
+    [
+      timeit(first_entry),
+      timeit(first_exit),
+      timeit(second_entry),
+      timeit(second_exit)
+    ]
+  end
 
   def time_diff(entry, exit)
     entry = timeit(entry)

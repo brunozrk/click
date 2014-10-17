@@ -12,6 +12,9 @@
 
         <%= simple_form_for @report, wrapper: :vertical_form do |f| %>
           <div class="box-body content">
+
+            <%= message(@report.errors.messages[:base] || '') %>
+
             <%= f.input :first_entry , wrapper_html: { class: 'col-xs-2 bootstrap-timepicker' },
                                        input_html: { class: 'timepicker' } %>
 
