@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   before_action :load_report, only: [:edit, :update, :destroy]
 
   def index
-    @reports = current_user.reports
+    @reports = current_user.reports.page params[:page]
   end
 
   def create
