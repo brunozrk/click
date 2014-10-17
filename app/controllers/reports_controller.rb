@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   before_action :initialize_report, only: [:new, :create]
   before_action :load_report, only: [:edit, :update, :destroy]
+  before_action :require_permission, only: [:edit, :update, :destroy]
 
   def index
     @reports = current_user.reports.page params[:page]
@@ -29,6 +30,12 @@ class ReportsController < ApplicationController
   end
 
   private
+
+  def require_permission
+    if current_user != @report.user
+      redirect_to reports_path
+    end
+  end
 
   def initialize_report
     @report = Report.new
