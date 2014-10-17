@@ -1,6 +1,7 @@
 puts 'Creating user...'
 user = User.create! first_name: 'Bruce', last_name: 'Wayne',
-                    email: 'brunce@wayne.com', password: '12345678'
+                    email: 'bruce@wayne.com', password: '12345678',
+                    confirmed_at: Date.today, confirmation_sent_at: Date.today
 puts "User created successfully: #{user.email} / 12345678"
 
 puts 'Creating reports...'
