@@ -1,0 +1,11 @@
+user_positive:
+  first_name: 'Sherlock'
+  last_name: 'Holmes'
+  email: 'sherlock@holmes.com'
+  encrypted_password: <%= Devise.bcrypt(User, '12345678') %>
+
+user_negative:
+  first_name: 'Albus'
+  last_name: 'Dumbledore'
+  email: 'albus@dumbledore.com'
+  encrypted_password: <%= Devise.bcrypt(User, '12345678') %>

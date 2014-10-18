@@ -1,5 +1,36 @@
 require 'rails_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    context 'presence of' do
+      it { expect(subject).to validate_presence_of(:first_name) }
+      it { expect(subject).to validate_presence_of(:last_name) }
+      it { expect(subject).to validate_presence_of(:email) }
+      it { expect(subject).to validate_presence_of(:password) }
+    end
+
+    context 'uniqueness of' do
+      pending
+    end
+  end
+
+  context 'with new instance' do
+    let(:user) { FactoryGirl.build(:user) }
+    it 'should be valid' do
+      expect(user).to be_valid
+    end
+  end
+
+  describe '#total_balance' do
+    let(:user_positive) { users(:user_positive) }
+    let(:user_negative) { users(:user_negative) }
+
+    context 'when positive balance' do
+      it { expect(user_positive.total_balance).to eq(time: 1800.0, sign: true) }
+    end
+
+    context 'when negative balance' do
+      it { expect(user_negative.total_balance).to eq(time: 9000.0, sign: false) }
+    end
+  end
 end

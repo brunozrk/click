@@ -1,0 +1,31 @@
+report_1:
+  first_entry: '08:00'
+  first_exit: '12:00'
+  second_entry: '14:00'
+  second_exit: '18:00'
+  day: <% Date.yesterday %>
+  user: user_positive
+
+report_2:
+  first_entry: '08:00'
+  first_exit: '12:00'
+  second_entry: '14:00'
+  second_exit: '18:30'
+  day: <% Date.today %>
+  user: user_positive
+
+report_3:
+  first_entry: '08:00'
+  first_exit: '12:00'
+  second_entry: '14:00'
+  second_exit: '18:00'
+  day: <% Date.yesterday %>
+  user: user_negative
+
+report_4:
+  first_entry: '08:00'
+  first_exit: '12:00'
+  second_entry: '14:00'
+  second_exit: '15:30'
+  day: <% Date.today %>
+  user: user_negative
