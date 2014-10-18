@@ -20,8 +20,8 @@ Rails.application.configure do
     address: 'smtp.sendgrid.net',
     port: '25',
     authentication: :plain,
-    user_name: '<username>',
-    password: '<password>',
+    user_name: Rails.application.secrets.sendgrid_user_name,
+    password: Rails.application.secrets.sendgrid_password,
     domain: 'sendgrid.me'
   }
 
