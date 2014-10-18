@@ -7,8 +7,6 @@ class Report < ActiveRecord::Base
 
   validate :validate_entry_exit_order
 
-  before_save
-
   default_scope { order('day DESC') }
 
   def worked
@@ -60,6 +58,7 @@ class Report < ActiveRecord::Base
   end
 
   def timeit(value)
+    return if value.nil?
     Time.parse(value) unless value.empty?
   end
 end
