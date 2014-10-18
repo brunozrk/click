@@ -15,4 +15,6 @@
 /log/*.log
 /tmp
 
+/config/secrets.yml
+
 coverage/
