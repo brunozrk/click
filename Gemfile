@@ -19,7 +19,7 @@ gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.1.0'
   gem 'rubocop', require: false
   gem 'sqlite3'
 end
