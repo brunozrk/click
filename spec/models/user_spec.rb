@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe User do
+  context 'relations' do
+    it { expect(subject).to have_many(:reports) }
+  end
+
   context 'validations' do
     context 'presence of' do
       it { expect(subject).to validate_presence_of(:first_name) }
