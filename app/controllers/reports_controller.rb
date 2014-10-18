@@ -3,6 +3,10 @@ class ReportsController < ApplicationController
   before_action :load_report, only: [:edit, :update, :destroy]
   before_action :require_permission, only: [:edit, :update, :destroy]
 
+  def new
+    @report.day = Date.today
+  end
+
   def index
     @reports = current_user.reports.page params[:page]
   end
