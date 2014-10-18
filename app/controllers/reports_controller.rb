@@ -36,9 +36,8 @@ class ReportsController < ApplicationController
   private
 
   def require_permission
-    if current_user != @report.user
-      redirect_to reports_path
-    end
+    return unless current_user != @report.user
+    redirect_to reports_path
   end
 
   def initialize_report
