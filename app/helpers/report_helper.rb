@@ -11,6 +11,8 @@ module ReportHelper
     Time.at(worked).gmtime.strftime('%H:%M')
   end
 
+  private
+
   def balance_html(time, color, icon)
     "<span class='text-#{color}'>
       <i class='fa fa-fw fa-#{icon}-circle'></i>

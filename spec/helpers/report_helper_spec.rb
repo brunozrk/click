@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 describe ReportHelper do
-  pending
+  describe '#sign' do
+    pending
+  end
+
+  describe '#hour_minute' do
+    it { expect(helper.hour_minute(8.hour)).to eq '08:00' }
+  end
 end
