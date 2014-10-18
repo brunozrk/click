@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017142521) do
+ActiveRecord::Schema.define(version: 20141018010458) do
 
   create_table "reports", force: true do |t|
     t.string   "first_entry"
     t.string   "first_exit"
     t.string   "second_entry"
     t.string   "second_exit"
-    t.string   "remote",       default: "0"
+    t.string   "remote",       default: "00:00"
     t.date     "day"
     t.boolean  "away",         default: false
     t.text     "notice"
