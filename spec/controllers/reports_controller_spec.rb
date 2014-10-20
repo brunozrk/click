@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 describe ReportsController do
-  pending
+  login_user
+
+  describe 'GET #index' do
+    pending
+  end
 end
