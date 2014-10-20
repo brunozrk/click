@@ -1,3 +1,10 @@
+user_logged_in:
+  first_name: 'Logged'
+  last_name: 'In'
+  email: 'logged@in.com'
+  encrypted_password: <%= Devise.bcrypt(User, '12345678') %>
+  confirmed_at: <%= Date.today %>
+
 user_positive:
   first_name: 'Sherlock'
   last_name: 'Holmes'
