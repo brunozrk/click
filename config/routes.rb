@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     get 'success', action: 'success', controller: 'registrations', as: 'success'
   end
 
-  authenticate :user do
+  authenticated :user do
     root 'dashboards#index'
-
-    resources :reports
   end
+
+  resources :reports
 end

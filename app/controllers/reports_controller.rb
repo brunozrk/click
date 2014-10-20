@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :initialize_report, only: [:new, :create]
   before_action :load_report, only: [:edit, :update, :destroy]
   before_action :require_permission, only: [:edit, :update, :destroy]
