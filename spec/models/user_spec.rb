@@ -14,7 +14,7 @@ describe User do
     end
 
     context 'uniqueness of' do
-      pending
+      it { expect(subject).to validate_uniqueness_of(:email) }
     end
   end
 
