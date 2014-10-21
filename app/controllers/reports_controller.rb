@@ -16,7 +16,7 @@ class ReportsController < ApplicationController
   def create
     @report.user = current_user
     if @report.update_attributes(report_params)
-      redirect_to reports_path
+      redirect_to reports_path, flash: { success: 'Relatório criado!' }
     else
       render 'new'
     end
@@ -24,7 +24,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update_attributes(report_params)
-      redirect_to reports_path
+      redirect_to reports_path, flash: { success: 'Relatório atualizado!' }
     else
       render 'edit'
     end
@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-    redirect_to reports_path
+    redirect_to reports_path, flash: { success: 'Relatório removido!' }
   end
 
   private
