@@ -1,0 +1,25 @@
+<section class="content-header">
+  <h1>Dashboard</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>
+                    <%= sign(current_user.total_balance, 'white') %>
+                </h3>
+                <p>
+                    Saldo de horas
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-clock-o"></i>
+            </div>
+            <%= link_to reports_path, class: 'small-box-footer' do %>
+                Mais detalhes <i class="fa fa-arrow-circle-right"></i>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</section>

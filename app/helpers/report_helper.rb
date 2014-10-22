@@ -1,9 +1,9 @@
 module ReportHelper
-  def sign(balance)
+  def sign(balance, color = nil)
     if balance[:sign]
-      balance_html(balance[:time], 'green', 'plus')
+      balance_html(balance[:time], color || 'green', 'plus')
     else
-      balance_html(balance[:time], 'red', 'minus')
+      balance_html(balance[:time], color || 'red', 'minus')
     end
   end
 
