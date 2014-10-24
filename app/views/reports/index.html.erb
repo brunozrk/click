@@ -39,11 +39,12 @@
                   <td><%= hour_minute(r.worked) %></td>
                   <td><%= sign(r.balance) %></td>
                   <td>
-                    <%= link_to edit_report_path(r) do %>
+                    <%= link_to edit_report_path(r), title: 'Editar' do %>
                       <i class="fa fa-edit"></i>
                     <% end %>
-                    <%= link_to report_path(r), data: { confirm: "Você tem certeza?" },
-                                                 method: :delete do %>
+                    <%= link_to report_path(r), title: 'Excluir',
+                                                data: { confirm: "Você tem certeza?" },
+                                                method: :delete do %>
                       <i class="fa fa-trash-o"></i>
                     <% end %>
                   </td>
