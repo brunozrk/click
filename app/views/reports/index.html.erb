@@ -6,59 +6,15 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Listagem </h3>
-          <div class="box-tools pull-right">
-            <h3 class="box-title"><%= sign(current_user.total_balance) %><h3>
-          </div>
+          <h3 class="box-title">Listagem <%= sign(current_user.total_balance) %></h3>
+          <%= render 'search_form' %>
         </div>
-        <div class="box-body table-responsive">
-          <div class="dataTables_wrapper form-inline" role="grid">
-            <table class="table table-bordered table-hover dataTable">
-              <thead>
-                  <tr>
-                    <th>Dia</th>
-                    <th>Primeira Entrada</th>
-                    <th>Primeira Saída</th>
-                    <th>Segunda Entrada</th>
-                    <th>Segunda Saída</th>
-                    <th>Remoto</th>
-                    <th>Total</th>
-                    <th>Saldo</th>
-                    <th>Ações</th>
-                  </tr>
-              </thead>
-              <tbody>
-                <% @reports.each do |r|%>
-                <tr>
-                  <td><%= r.day.strftime('%d/%m/%Y') %></td>
-                  <td><%= r.first_entry %></td>
-                  <td><%= r.first_exit %></td>
-                  <td><%= r.second_entry %></td>
-                  <td><%= r.second_exit %></td>
-                  <td><%= r.remote %></td>
-                  <td><%= hour_minute(r.worked) %></td>
-                  <td><%= sign(r.balance) %></td>
-                  <td>
-                    <%= link_to edit_report_path(r), title: 'Editar' do %>
-                      <i class="fa fa-edit"></i>
-                    <% end %>
-                    <%= link_to report_path(r), title: 'Excluir',
-                                                data: { confirm: "Você tem certeza?" },
-                                                method: :delete do %>
-                      <i class="fa fa-trash-o"></i>
-                    <% end %>
-                  </td>
-                </tr>
-                <% end %>
-
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="box-footer clearfix">
-           <%= paginate @reports %>
-        </div>
+        <%= render 'list' %>
       </div>
     </div>
   </div>
 </section>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "reports/index.js" %>
+<% end %>

@@ -25,6 +25,10 @@ class Report < ActiveRecord::Base
     end
   end
 
+  def self.find_by_date_range(from, to)
+    where('day >= ? AND day <= ?', from, to)
+  end
+
   private
 
   def validate_entry_exit_order

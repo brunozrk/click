@@ -51,4 +51,11 @@ describe Report do
       it { expect(report_negative.balance).to eq(time: 3600.0, sign: false) }
     end
   end
+
+  describe '#self.find_by_date_range' do
+    let(:date) { Date.new(2014, 02, 03)  }
+    it 'find reports by date range' do
+      expect(described_class.find_by_date_range(date, date).count).to eq 3
+    end
+  end
 end

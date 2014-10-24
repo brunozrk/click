@@ -10,7 +10,9 @@ class ReportsController < ApplicationController
   end
 
   def index
-    @reports = current_user.reports.page params[:page]
+    @from = from
+    @to = to
+    @reports = current_user.reports.find_by_date_range(@from, @to).page params[:page]
   end
 
   def create
@@ -36,6 +38,21 @@ class ReportsController < ApplicationController
   end
 
   private
+
+  def from
+    param_or_today(:from, 30.days.ago)
+  end
+
+  def to
+    param_or_today(:to)
+  end
+
+  def param_or_today(key, default = Date.today)
+    date = params[key]
+    date ? Date.parse(date) : default
+  rescue ArgumentError
+    default
+  end
 
   def require_permission
     return unless current_user != @report.user
