@@ -6,7 +6,39 @@ describe ReportsController do
   describe 'GET #index' do
     let(:page) { '3' }
 
-    pending # date range
+    context 'when filter reports by date range' do
+      let(:from) { '03/02/2014' }
+      let(:to) { '04/02/2014' }
+
+      before do
+        get :index, from: from, to: to
+      end
+
+      it 'the maximum day date should be greater than #{from}' do
+        expect(assigns(:reports).max_by(&:day).day).to be > Date.parse(from)
+      end
+
+      it 'the minimum day date should be less than #{to}' do
+        expect(assigns(:reports).min_by(&:day).day).to be < Date.parse(to)
+      end
+    end
+
+    context 'when date range invalid' do
+      let(:invalid_from) { '66/48/2014' }
+      let(:invalid_to) { 'invalid' }
+
+      before do
+        get :index, from: invalid_from, to: invalid_to
+      end
+
+      it 'should assign 30 days ago to #from' do
+        expect(assigns(:from).to_date).to eq 30.days.ago.to_date
+      end
+
+      it 'should assign currente date to #to' do
+        expect(assigns(:to).to_date).to eq Date.today.to_date
+      end
+    end
 
     it 'should load the reports of requested page' do
       expect(Report).to receive(:page).with(page)
