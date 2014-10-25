@@ -10,6 +10,8 @@ gem 'devise'
 
 gem 'kaminari'
 
+gem 'mina'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-rails'
