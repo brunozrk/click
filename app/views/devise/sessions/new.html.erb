@@ -5,6 +5,7 @@
     <div class="body bg-gray">
 
       <%= devise_alert_messages! %>
+      <%= flash[:notice] %>
 
       <%= f.input :email, placeholder: 'Email', label: false %>
 

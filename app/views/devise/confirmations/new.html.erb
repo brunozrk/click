@@ -1,7 +1,8 @@
 <div class="form-box" id="login-box">
   <div class="header">Reenviar e-mail de confirmação</div>
-  <%= simple_form_for resource, as: resource_name, url: confirmation_path(resource_name), wrapper: :vertical_form do |f| %>
+  <%= simple_form_for resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }, wrapper: :vertical_form do |f| %>
     <div class="body bg-gray">
+      <%= devise_error_messages! %>
       <%= f.input :email, placeholder: 'Email', label: false %>
     </div>
     <div class="footer">
