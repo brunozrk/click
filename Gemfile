@@ -18,6 +18,11 @@ gem 'font-awesome-rails'
 
 gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
 
+group :production do
+  gem 'mysql2'
+  gem 'unicorn'
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
