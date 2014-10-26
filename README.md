@@ -1,11 +1,11 @@
 # Click
 
-*Click* tem como objetivo oferecer uma ferramenta web para controlar o saldo de horas de trabalho.
+*Click* tem como objetivo oferecer uma ferramenta web para controlar o saldo de horas de trabalho. Acesse em www.clickhoras.com
 
 ## Instalação
 
 Baixe o repositório
-    
+
     git clone git@github.com:Brunozrk/click.git
 
 Instale as dependências
