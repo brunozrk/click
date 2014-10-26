@@ -29,6 +29,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'rubocop', require: false
   gem 'sqlite3'
+  gem 'mailcatcher'
 end
 
 group :test do
