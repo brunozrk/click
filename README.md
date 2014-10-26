@@ -34,7 +34,7 @@ Rode a aplicação :grin:
 
 Novas ideias e contribuintes são bem vindos!
 
-## Como contribuir?
+### Como contribuir?
 
   * Acompanhe o projeto
     * Opine nos [Pull Requests](https://github.com/Brunozrk/click/pulls);
