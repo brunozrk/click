@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root 'sites#index', as: :unauthenticated_root
+      root 'site#index', as: :unauthenticated_root
     end
   end
 
   resources :reports
-  resources :sites, only: :index
+  resources :site, only: :index
 end
