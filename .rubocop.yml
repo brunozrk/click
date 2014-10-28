@@ -38,3 +38,6 @@ Style/TrailingWhitespace:
 
 Rails/Output:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 15
