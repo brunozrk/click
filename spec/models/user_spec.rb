@@ -11,10 +11,15 @@ describe User do
       it { expect(subject).to validate_presence_of(:last_name) }
       it { expect(subject).to validate_presence_of(:email) }
       it { expect(subject).to validate_presence_of(:password) }
+      it { expect(subject).to validate_presence_of(:hours_per_day) }
     end
 
     context 'uniqueness of' do
       it { expect(subject).to validate_uniqueness_of(:email) }
+    end
+
+    context 'inclusion' do
+      it { expect(subject).to validate_inclusion_of(:hours_per_day).in_range(1..24) }
     end
   end
 

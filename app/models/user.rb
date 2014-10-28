@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :hours_per_day, presence: true
+  validates :hours_per_day, inclusion: { in: 1..24 }
 
   def total_balance
     positive = reports.reduce(0) { |a, e| e.balance[:sign] ? a + e.balance[:time] : a }
