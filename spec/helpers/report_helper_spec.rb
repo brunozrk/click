@@ -7,5 +7,6 @@ describe ReportHelper do
 
   describe '#hour_minute' do
     it { expect(helper.hour_minute(8.hour)).to eq '08:00' }
+    it { expect(helper.hour_minute(30.hour)).to eq '30:00' }
   end
 end

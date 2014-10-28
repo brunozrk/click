@@ -8,7 +8,9 @@ module ReportHelper
   end
 
   def hour_minute(worked)
-    Time.at(worked).gmtime.strftime('%H:%M')
+    hours = worked / (60 * 60)
+    minutes = (worked / 60) % 60
+    format('%02d:%02d', hours, minutes)
   end
 
   private
