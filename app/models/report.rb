@@ -16,12 +16,13 @@ class Report < ActiveRecord::Base
   end
 
   def balance
+    hours_per_day = user.hours_per_day
     if away
-      { time: 8.hour, sign: false }
-    elsif 8.hour > worked
-      { time: 8.hour - worked, sign: false }
+      { time: hours_per_day.hour, sign: false }
+    elsif hours_per_day.hour > worked
+      { time: hours_per_day.hour - worked, sign: false }
     else
-      { time: worked - 8.hour, sign: true }
+      { time: worked - hours_per_day.hour, sign: true }
     end
   end
 

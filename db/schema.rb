@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018010458) do
+ActiveRecord::Schema.define(version: 20141028122407) do
 
   create_table "reports", force: true do |t|
     t.string   "first_entry"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20141018010458) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.integer  "hours_per_day",          default: 8
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
