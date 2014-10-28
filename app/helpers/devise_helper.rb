@@ -20,7 +20,7 @@ module DeviseHelper
 
   def html(sentence, messages)
     html = <<-HTML
-    <div class="callout callout-danger">
+    <div class="bg-danger callout callout-danger">
       <h4>#{sentence}</h4>
       #{messages}
     </div>
