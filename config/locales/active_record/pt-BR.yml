@@ -8,6 +8,7 @@ pt-BR:
       user:
         first_name: Primeiro
         last_name: Sobrenome
+        hours_per_day: Horas de trabalho por dia
         password: Senha
         password_confirmation: Confirmação de Senha
         current_password: Senha Atual
