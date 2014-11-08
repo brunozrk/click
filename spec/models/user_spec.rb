@@ -42,4 +42,14 @@ describe User do
       it { expect(user_negative.total_balance).to eq(time: 9000.0, sign: false) }
     end
   end
+
+  describe '#balance_in_range' do
+    let(:user) { users(:user_logged_in) }
+    let(:from) { Date.new(2014, 02, 01) }
+    let(:to) { Date.new(2014, 02, 05) }
+
+    it 'returns user balance in specific range' do
+      expect(user.balance_in_range(from, to)).to eq(time: 27_000.0, sign: false)
+    end
+  end
 end
