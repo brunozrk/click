@@ -26,11 +26,24 @@ class Report < ActiveRecord::Base
     end
   end
 
+  def estimated_exit
+    return unless can_estimate?
+    Time.parse(second_entry) + balance.fetch(:time)
+  end
+
   def self.find_by_date_range(from, to)
     where('day >= ? AND day <= ?', from, to)
   end
 
   private
+
+  def can_estimate?
+    return false unless second_exit.blank?
+    [first_entry, first_exit, second_entry].each do |f|
+      return false if f.blank?
+    end
+    true
+  end
 
   def validate_entry_exit_order
     return unless any_higher?(first_entry, 3) ||
