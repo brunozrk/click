@@ -11,14 +11,15 @@ describe ReportHelper do
   end
 
   describe '#second_exit' do
-    let(:report_without_second_exit) { FactoryGirl.build(:report_without_second_exit) }
     let(:report) { FactoryGirl.build(:report) }
+    let(:report_without_second_exit) { FactoryGirl.build(:report_without_second_exit) }
+    let(:report_without_second_reports) { FactoryGirl.build(:report_without_second_exit, second_entry: '') }
 
     context 'when second_exit is NOT blank' do
       it { expect(helper.second_exit(report)).to eq report.second_exit }
     end
 
-    context 'when second_exit is blank' do
+    context 'when second_exit is blank and estimated_exit exists' do
       let(:expected) do
         "<span title='Saída Estimada' class='text-muted'>
           <i class='fa fa-fw fa-sign-out'></i>
@@ -26,6 +27,10 @@ describe ReportHelper do
         </span>".squish
       end
       it { expect(helper.second_exit(report_without_second_exit).squish).to eq expected }
+    end
+
+    context 'when second_exit and estimated_exit are blank' do
+      it { expect(helper.second_exit(report_without_second_reports)).to eq nil }
     end
   end
 end

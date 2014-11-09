@@ -18,7 +18,7 @@ module ReportHelper
     "<span title='Saída Estimada' class='text-muted'>
       <i class='fa fa-fw fa-sign-out'></i>
       #{ report.estimated_exit.strftime('%H:%M') }
-    </span>".html_safe
+    </span>".html_safe if report.estimated_exit
   end
 
   private
