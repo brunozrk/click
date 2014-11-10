@@ -10,6 +10,17 @@ class User < ActiveRecord::Base
   validates :hours_per_day, inclusion: { in: 1..24 }
 
   def total_balance
+    balance(reports)
+  end
+
+  def balance_in_range(from, to)
+    filtered_reports = reports.find_by_date_range(from, to)
+    balance(filtered_reports)
+  end
+
+  private
+
+  def balance(reports)
     positive = reports.reduce(0) { |a, e| e.balance[:sign] ? a + e.balance[:time] : a }
     negative = reports.reduce(0) { |a, e| !e.balance[:sign] ? a + e.balance[:time] : a }
 
