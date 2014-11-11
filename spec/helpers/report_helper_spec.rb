@@ -2,7 +2,33 @@ require 'rails_helper'
 
 describe ReportHelper do
   describe '#sign' do
-    pending
+    context 'when sign is true' do
+      let(:balance) { { time: 2700, sign: true } }
+
+      it 'returns html with text-green class' do
+        expect(helper.sign(balance)).to include 'text-green'
+      end
+
+      it 'returns html with fa-plus-circle class' do
+        expect(helper.sign(balance)).to include 'fa-plus-circle'
+      end
+
+      it 'returns html with text-white class' do
+        expect(helper.sign(balance, 'white')).to include 'text-white'
+      end
+    end
+
+    context 'when sign is false' do
+      let(:balance) { { time: 2700, sign: false } }
+
+      it 'returns html with text-red class' do
+        expect(helper.sign(balance)).to include 'text-red'
+      end
+
+      it 'returns html with fa-plus-circle class' do
+        expect(helper.sign(balance)).to include 'fa-minus-circle'
+      end
+    end
   end
 
   describe '#hour_minute' do
