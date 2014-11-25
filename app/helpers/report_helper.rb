@@ -21,6 +21,11 @@ module ReportHelper
     </span>".html_safe if report.estimated_exit
   end
 
+  def pop_over_notice(notice)
+    return if notice.blank?
+    "data-toggle='popover' data-content='#{h notice}' data-placement='top'".html_safe
+  end
+
   private
 
   def balance_html(time, color, icon)

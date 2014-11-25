@@ -25,5 +25,5 @@ $(document).ready(function(){
     $('#date_range_to').val(end.format('DD/MM/YYYY'));
   });
 
-  $('#balance').popover({ trigger: "hover" });
+  $('#balance, .list-row').popover({ trigger: "hover" });
 });

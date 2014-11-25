@@ -59,4 +59,17 @@ describe ReportHelper do
       it { expect(helper.second_exit(report_without_second_reports)).to eq nil }
     end
   end
+
+  describe '#pop_over_notice' do
+    context 'when notice is blank' do
+      let(:notice) { '' }
+      it { expect(helper.pop_over_notice(notice)).to be_nil }
+    end
+
+    context 'when notice is NOT blank' do
+      let(:notice) { 'some text' }
+      let(:expected) { "data-toggle='popover' data-content='some text' data-placement='top'" }
+      it { expect(helper.pop_over_notice(notice)).to eq expected }
+    end
+  end
 end
