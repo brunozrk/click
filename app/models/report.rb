@@ -35,6 +35,10 @@ class Report < ActiveRecord::Base
     where('day >= ? AND day <= ?', from, to)
   end
 
+  def self.last_day
+    last ? last.day : Date.today
+  end
+
   private
 
   def can_estimate?

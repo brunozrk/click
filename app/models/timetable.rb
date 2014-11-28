@@ -7,8 +7,8 @@ class Timetable < ActiveRecord::Base
   default_scope { order('closing_day DESC') }
 
   def balance
-    start_day = last_timetable ? last_timetable.closing_day : closing_day - 60
-    user.balance_in_range(start_day + 1, closing_day)
+    start_day = last_timetable ? last_timetable.closing_day : user.reports.last_day
+    user.balance_in_range(start_day, closing_day)
   end
 
   private

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   def total_balance
     nearest_timetable = timetables.first
-    closing_day = nearest_timetable ? nearest_timetable.closing_day : reports.last.day
+    closing_day = nearest_timetable ? nearest_timetable.closing_day : reports.last_day - 1
     balance(reports.where('day > ?', closing_day))
   end
 
