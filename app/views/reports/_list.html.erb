@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <% @reports.each do |r|%>
-        <tr class="list-row" <%= pop_over_notice(r.notice) %> >
+        <tr popover <%= pop_over_notice(r.notice) %> >
           <td><%= r.day.strftime('%d/%m/%Y') %></td>
           <td><%= r.first_entry %></td>
           <td><%= r.first_exit %></td>

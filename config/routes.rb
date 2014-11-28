@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :reports
+  resources :timetables
+
   resources :site, only: :index
 end
