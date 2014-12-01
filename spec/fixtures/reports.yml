@@ -61,3 +61,11 @@ report_user_logged_in_4:
   second_exit: '16:00'
   day: <%= Date.new(2014, 02, 06)%>
   user: user_logged_in
+
+unallowed_report:
+  first_entry: '08:00'
+  first_exit: '12:00'
+  second_entry: '14:00'
+  second_exit: '16:00'
+  day: <%= Date.new(2014, 02, 06)%>
+  user: unallowed_user
