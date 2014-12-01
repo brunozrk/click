@@ -1,9 +1,10 @@
 class TimetablesController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :load_timetables
-  before_action :initialize_timetable, only: [:index, :new, :create]
+  before_action :initialize_timetable, only: [:index, :create]
   before_action :load_timetable, only: [:edit, :update, :destroy]
+  before_action :require_permission, only: [:edit, :update, :destroy]
+  before_action :load_timetables
 
   def create
     @timetable.user = current_user
@@ -32,6 +33,11 @@ class TimetablesController < ApplicationController
   end
 
   private
+
+  def require_permission
+    return unless current_user != @timetable.user
+    redirect_to timetables_path
+  end
 
   def initialize_timetable
     @timetable = Timetable.new
