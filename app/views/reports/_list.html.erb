@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <% @reports.each do |r|%>
-        <tr popover <%= pop_over_notice(r.notice) %> >
+        <tr>
           <td><%= r.day.strftime('%d/%m/%Y') %></td>
           <td><%= r.first_entry %></td>
           <td><%= r.first_exit %></td>
@@ -34,6 +34,7 @@
                                         method: :delete do %>
               <i class="fa fa-trash-o"></i>
             <% end %>
+            <%= pop_over_info(r.notice, r.working_day) %>
           </td>
         </tr>
         <% end %>

@@ -21,12 +21,21 @@ module ReportHelper
     </span>".html_safe if report.estimated_exit
   end
 
-  def pop_over_notice(notice)
-    return if notice.blank?
-    "data-toggle='popover' data-content='#{h notice}' data-placement='top'".html_safe
+  def pop_over_info(notice, working_day)
+    return if notice.blank? && working_day
+    "<i popover data-toggle='popover'
+                data-content='#{h notice} #{nonworking_day(working_day)}'
+                data-placement='left'
+                class='fa fa-fw fa-info-circle'>
+    </i>".html_safe
   end
 
   private
+
+  def nonworking_day(working_day)
+    return if working_day
+    '(Dia não útil)'
+  end
 
   def balance_html(time, color, icon)
     "<span class='text-#{color}'>
