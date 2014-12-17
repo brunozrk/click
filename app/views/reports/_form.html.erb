@@ -7,7 +7,7 @@
     <div class="col-md-6">
       <div class="box box-danger">
         <div class="box-header">
-          <h3 class="box-title">Apontamento</h3>
+          <h3 class="box-title">Apontamento </h3>
         </div>
 
         <%= simple_form_for @report, wrapper: :vertical_form do |f| %>
@@ -28,18 +28,27 @@
             <%= f.input :second_exit , wrapper_html: { class: 'col-xs-3 bootstrap-timepicker' },
                                        input_html: { class: 'timepicker' } %>
             </div>
+
             <%= f.input :remote , wrapper_html: { class: 'col-xs-5 bootstrap-timepicker' },
                                   input_html: { class: 'timepicker' } %>
 
             <%= f.input :notice, wrapper_html: { class: 'col-xs-10'} %>
 
-            <%= f.input :day, wrapper_html: { class: 'col-xs-5'},
+            <%= f.input :day, wrapper_html: { class: 'col-xs-4'},
                               input_html: { class: 'datepicker', autocomplete: 'off', value: @report.day.try(:strftime, "%d/%m/%Y")  },
                               as: :string %>
 
             <%= f.input :away, collection: { 'Sim' => true, 'Não' => false},
                                include_blank: false,
-                               wrapper_html: { class: 'col-xs-5'} %>
+                               wrapper_html: { class: 'col-xs-3'} %>
+
+            <%= f.input :working_day, collection: { 'Sim' => true, 'Não' => false},
+                                      include_blank: false,
+                                      input_html: { popover: '',
+                                                    data: { content: 'Dia não útil não obriga você a cumprir a carga horária diária (Ex: Feriados, Finais de semana, etc)',
+                                                            placement: 'top',
+                                                            toggle: 'popover' } },
+                                      wrapper_html: { class: 'col-xs-3' } %>
 
           </div>
           <div class="box-footer">

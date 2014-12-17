@@ -76,7 +76,8 @@ class ReportsController < ApplicationController
       :remote,
       :notice,
       :day,
-      :away
+      :away,
+      :working_day
     )
   end
 end
