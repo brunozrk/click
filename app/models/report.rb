@@ -16,6 +16,8 @@ class Report < ActiveRecord::Base
   end
 
   def balance
+    return { time: worked, sign: true } unless working_day
+
     hours_per_day = user.hours_per_day
     if away
       { time: hours_per_day.hour, sign: false }
