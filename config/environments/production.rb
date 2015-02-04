@@ -86,4 +86,6 @@ Rails.application.configure do
     password: Rails.application.secrets.sendgrid_password,
     domain: 'sendgrid.me'
   }
+
+  GA.tracker = Rails.application.secrets.ga_tracker
 end

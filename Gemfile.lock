@@ -75,6 +75,7 @@ GEM
       railties (>= 3.2, < 5.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
+    google-analytics-rails (0.0.6)
     haml (4.0.6)
       tilt
     hike (1.2.3)
@@ -244,6 +245,7 @@ DEPENDENCIES
   devise
   factory_girl (~> 4.0)
   font-awesome-rails
+  google-analytics-rails
   jquery-rails
   kaminari
   mailcatcher

@@ -8,6 +8,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise'
 
+gem 'google-analytics-rails'
+
 gem 'kaminari'
 
 gem 'mina'
