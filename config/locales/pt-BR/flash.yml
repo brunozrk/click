@@ -1,0 +1,19 @@
+pt-BR:
+  flash:
+    reports:
+      create:
+        notice: 'Relatório criado!'
+      update:
+        notice: 'Relatório atualizado!'
+      destroy:
+        notice: 'Relatório removido!'
+      validations:
+        entry_exit_order: 'Sequência de entrada/saída inválida'
+
+    timetables:
+      create:
+        notice: 'Quadro fechado!'
+      update:
+        notice: 'Fechamento atualizado!'
+      destroy:
+        notice: 'Fechamento removido!'

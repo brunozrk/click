@@ -55,7 +55,7 @@ class Report < ActiveRecord::Base
     return unless any_higher?(first_entry, 3) ||
                   any_higher?(first_exit, 2) ||
                   any_higher?(second_entry, 1)
-    errors.add(:base, 'Sequência de entrada/saída inválida')
+    errors.add(:base, I18n.t('flash.reports.validations.entry_exit_order'))
   end
 
   def any_higher?(value, lasts)

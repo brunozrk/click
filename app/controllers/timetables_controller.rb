@@ -9,7 +9,7 @@ class TimetablesController < ApplicationController
   def create
     @timetable.user = current_user
     if @timetable.update_attributes(timetable_params)
-      redirect_to timetables_path, flash: { success: 'Quadro fechado!' }
+      redirect_to timetables_path, flash: { success: t('flash.reports.create.notice') }
     else
       render 'index'
     end
@@ -21,7 +21,7 @@ class TimetablesController < ApplicationController
 
   def update
     if @timetable.update_attributes(timetable_params)
-      redirect_to timetables_path, flash: { success: 'Fechamento atualizado!' }
+      redirect_to timetables_path, flash: { success: t('flash.reports.update.notice') }
     else
       render 'index'
     end
@@ -29,7 +29,7 @@ class TimetablesController < ApplicationController
 
   def destroy
     @timetable.destroy
-    redirect_to timetables_path, flash: { success: 'Fechamento removido!' }
+    redirect_to timetables_path, flash: { success: t('flash.reports.destroy.notice') }
   end
 
   private
