@@ -4,7 +4,7 @@
   <title>Click - Controle de Horas Online</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Click tem como objetivo oferecer uma ferramenta online para controlar o saldo de horas (banco de horas) de trabalho">
-  <%= analytics_init if Rails.env.production? %>
+  <%= render 'layouts/google_analytics' %>
   <%= stylesheet_link_tag 'application_site', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
