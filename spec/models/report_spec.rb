@@ -42,6 +42,7 @@ describe Report do
   describe '#balance' do
     let(:report_positive) { FactoryGirl.build(:report, second_exit: '19:00') }
     let(:report_negative) { FactoryGirl.build(:report, second_exit: '17:00') }
+    let(:report_away) { FactoryGirl.build(:report, away: true) }
     let(:report_nonworking_day) { FactoryGirl.build(:report, working_day: false) }
 
     context 'when positive balance' do
@@ -50,6 +51,10 @@ describe Report do
 
     context 'when negative balance' do
       it { expect(report_negative.balance).to eq(time: 3600.0, sign: false) }
+    end
+
+    context 'when away' do
+      it { expect(report_away.balance).to eq(time: 28_800.0, sign: false) }
     end
 
     context 'when nonworking day' do
