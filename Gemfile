@@ -32,6 +32,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'sqlite3'
   gem 'mailcatcher'
+  gem 'rb-readline'
 end
 
 group :test do
