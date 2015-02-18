@@ -12,7 +12,7 @@ class ReportsController < ApplicationController
   def index
     @from = from
     @to = to
-    @reports = current_user.reports.find_by_date_range(@from, @to).page params[:page]
+    @reports = ReportPresenter.wrap(current_user.reports.find_by_date_range(@from, @to).page params[:page])
   end
 
   def create
