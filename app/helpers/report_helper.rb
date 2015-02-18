@@ -1,24 +1,19 @@
 module ReportHelper
-  def sign(balance, color = nil)
-    if balance[:sign]
-      balance_html(balance[:time], color || 'green', 'plus')
-    else
-      balance_html(balance[:time], color || 'red', 'minus')
-    end
+  TEXT_COLOR = { true => 'green', false => 'red' }
+  ICON = { true => 'plus', false => 'minus' }
+
+  def text_color(status)
+    TEXT_COLOR.fetch(status)
   end
 
-  def hour_minute(worked)
-    hours = worked / (60 * 60)
-    minutes = (worked / 60) % 60
+  def icon(status)
+    ICON.fetch(status)
+  end
+
+  def format_time(time)
+    hours = time / (60 * 60)
+    minutes = (time / 60) % 60
     format('%02d:%02d', hours, minutes)
-  end
-
-  def second_exit(report)
-    return report.second_exit unless report.second_exit.blank?
-    "<span title='Saída Estimada' class='text-muted'>
-      <i class='fa fa-fw fa-sign-out'></i>
-      #{ report.estimated_exit.strftime('%H:%M') }
-    </span>".html_safe if report.estimated_exit
   end
 
   def pop_over_info(notice, working_day)
@@ -35,12 +30,5 @@ module ReportHelper
   def nonworking_day(working_day)
     return if working_day
     '(Dia não útil)'
-  end
-
-  def balance_html(time, color, icon)
-    "<span class='text-#{color}'>
-      <i class='fa fa-fw fa-#{icon}-circle'></i>
-      #{hour_minute(time)}
-    </span>".html_safe
   end
 end
