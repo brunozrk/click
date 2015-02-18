@@ -1,0 +1,4 @@
+<span class="text-<%= local_assigns.fetch(:text_color, text_color(balance[:sign])) %>">
+  <i class="fa fa-fw fa-<%= icon(balance[:sign]) %>-circle"></i>
+  <%= format_time(balance[:time]) %>
+</span>

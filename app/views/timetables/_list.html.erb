@@ -18,7 +18,8 @@
               <% if @timetables.each do |t|%>
               <tr>
                 <td><%= t.closing_day.strftime('%d/%m/%Y') %></td>
-                <td><%= sign(t.balance) %></td>
+                <td>
+                  <%= render partial: 'layouts/report_balance', locals: { balance: t.balance } %>
                 <td>
                   <%= link_to edit_timetable_path(t), title: 'Editar' do %>
                     <i class="fa fa-edit"></i>

@@ -7,7 +7,8 @@
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3>
-                    <%= sign(current_user.total_balance, 'white') %>
+                  <%= render partial: 'layouts/report_balance', locals: { balance: current_user.total_balance,
+                                                                          text_color: 'white' } %>
                 </h3>
                 <p>
                     Saldo de horas

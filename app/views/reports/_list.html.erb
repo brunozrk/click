@@ -21,10 +21,12 @@
           <td><%= r.first_entry %></td>
           <td><%= r.first_exit %></td>
           <td><%= r.second_entry %></td>
-          <td><%= second_exit(r) %></td>
+          <td><%= r.last_exit %></td>
           <td><%= r.remote %></td>
-          <td><%= hour_minute(r.worked) %></td>
-          <td><%= sign(r.balance) %></td>
+          <td><%= format_time(r.worked) %></td>
+          <td>
+            <%= render partial: 'layouts/report_balance', locals: { balance: r.balance } %>
+          </td>
           <td>
             <%= link_to edit_report_path(r), title: 'Editar' do %>
               <i class="fa fa-edit"></i>
