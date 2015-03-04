@@ -24,4 +24,10 @@ $(document).ready(function(){
     $('#date_range_from').val(start.format('DD/MM/YYYY'));
     $('#date_range_to').val(end.format('DD/MM/YYYY'));
   });
+
+  $('#pdf_export').on('click', function(){
+    from = $('#date_range_from').val();
+    to = $('#date_range_to').val();
+    window.open($(this).data('url') + '?from='+ from +'&to=' + to);
+  });
 });

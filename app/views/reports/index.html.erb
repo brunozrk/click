@@ -18,6 +18,8 @@
                        locals: { balance: current_user.balance_in_range(@from, @to)} %>
           </h3>
           <%= render 'search_form' %>
+          <%= render 'export_link' %>
+
         </div>
         <%= render 'list' %>
       </div>

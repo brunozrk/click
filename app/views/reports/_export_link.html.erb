@@ -1,0 +1,10 @@
+<div class="box-tools pull-right">
+  <div class="btn-group">
+    <button type="button" class="btn btn-warning btn-flat " data-toggle="dropdown">
+      <span class="caret"></span>&nbsp; Exportar
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to('PDF', 'javascript:;', data: { url: reports_export_path }, id: 'pdf_export') %></li>
+    </ul>
+  </div>
+</div>
