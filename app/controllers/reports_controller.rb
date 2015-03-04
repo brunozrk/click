@@ -15,6 +15,14 @@ class ReportsController < ApplicationController
     @reports = ReportPresenter.wrap(current_user.reports.find_by_date_range(@from, @to).page params[:page])
   end
 
+  def export
+    reports = ReportPresenter.wrap(current_user.reports.find_by_date_range(from, to))
+    send_data PdfReport.new(reports, from, to).generate.render,
+              filename: "#{current_user.first_name}.pdf",
+              type: 'application/pdf',
+              disposition: 'inline'
+  end
+
   def create
     @report.user = current_user
     if @report.update_attributes(report_params)
