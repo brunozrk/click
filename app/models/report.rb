@@ -58,8 +58,14 @@ class Report < ActiveRecord::Base
     errors.add(:base, I18n.t('flash.reports.validations.entry_exit_order'))
   end
 
-  def any_higher?(value, lasts)
-    (times.last(lasts).compact).any? { |x| x < timeit(value) }
+  def any_higher?(value, last)
+    last_fills = times.last(last).compact
+    return true if require_previous_fill?(value, last_fills)
+    last_fills.any? { |x| x < timeit(value) }
+  end
+
+  def require_previous_fill?(value, last_fills)
+    value.blank? && !last_fills.empty?
   end
 
   def times

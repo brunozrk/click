@@ -17,8 +17,10 @@ describe Report do
 
     context 'validate_entry_exit_order' do
       let(:report) { FactoryGirl.build(:report, first_entry: '12:00', second_entry: '11:00') }
+      let(:report_case_2) { FactoryGirl.build(:report, second_entry: '11:00') }
 
       it { expect(report).to_not be_valid }
+      it { expect(report_case_2).to_not be_valid }
 
       it 'contains base error' do
         report.valid?
