@@ -16,3 +16,7 @@
 /tmp
 
 coverage/
+
+# ruby gemset / versions configuration files
+.ruby-version
+.ruby-gemset
