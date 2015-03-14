@@ -1,4 +1,4 @@
-# Click
+# Click [![Code Climate](https://codeclimate.com/github/Brunozrk/click/badges/gpa.svg)](https://codeclimate.com/github/Brunozrk/click)
 
 *Click* tem como objetivo oferecer uma ferramenta web para controlar o saldo de horas de trabalho. Acesse em www.clickhoras.com
 
