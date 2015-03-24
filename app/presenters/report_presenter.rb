@@ -27,4 +27,17 @@ class ReportPresenter < Burgundy::Item
     return if working_day
     '(Dia não útil)'
   end
+
+  def estimated_exit
+    return unless can_estimate?
+    Time.parse(second_entry) + balance.fetch(:time)
+  end
+
+  def can_estimate?
+    return false unless second_exit.blank?
+    [first_entry, first_exit, second_entry].each do |f|
+      return false if f.blank?
+    end
+    true
+  end
 end

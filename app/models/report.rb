@@ -2,12 +2,14 @@ class Report < ActiveRecord::Base
   belongs_to :user
 
   validates :day, :remote, presence: true
-
   validates :day, uniqueness: { scope: :user_id }
 
   validate :validate_entry_exit_order
 
   default_scope { order('day DESC') }
+
+  NEGATIVE = false
+  POSITIVE = true
 
   def worked
     first_total = time_diff(first_entry, first_exit)
@@ -16,21 +18,12 @@ class Report < ActiveRecord::Base
   end
 
   def balance
-    return { time: worked, sign: true } unless working_day
+    return { time: worked, sign: POSITIVE } unless working_day
 
-    hours_per_day = user.hours_per_day
-    if away
-      { time: hours_per_day.hour, sign: false }
-    elsif hours_per_day.hour > worked
-      { time: hours_per_day.hour - worked, sign: false }
-    else
-      { time: worked - hours_per_day.hour, sign: true }
-    end
-  end
+    hours_per_day = user.hours_per_day.hour
+    time, sign = away ?  [hours_per_day, NEGATIVE] : [balance_diff(hours_per_day), positive_balance?(hours_per_day)]
 
-  def estimated_exit
-    return unless can_estimate?
-    Time.parse(second_entry) + balance.fetch(:time)
+    { time: time, sign: sign }
   end
 
   def self.find_by_date_range(from, to)
@@ -42,14 +35,6 @@ class Report < ActiveRecord::Base
   end
 
   private
-
-  def can_estimate?
-    return false unless second_exit.blank?
-    [first_entry, first_exit, second_entry].each do |f|
-      return false if f.blank?
-    end
-    true
-  end
 
   def validate_entry_exit_order
     return unless any_higher?(first_entry, 3) ||
@@ -90,5 +75,13 @@ class Report < ActiveRecord::Base
   def timeit(value)
     return if value.nil?
     Time.parse(value) unless value.empty?
+  end
+
+  def balance_diff(hours_per_day)
+    (worked - hours_per_day).abs
+  end
+
+  def positive_balance?(hours_per_day)
+    hours_per_day <= worked
   end
 end
