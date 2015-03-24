@@ -81,7 +81,7 @@ class PdfReport
         report.first_entry,
         report.first_exit,
         report.second_entry,
-        report.last_exit,
+        report.second_exit,
         report.remote,
         h.format_time(report.worked),
         sign(report)
