@@ -5,7 +5,7 @@ FactoryGirl.define do
     second_entry '14:00'
     second_exit '18:00'
     day Date.today
-    user User.last
+    association :user, factory: :user
   end
 
   factory :report_without_second_exit, class: Report do
@@ -13,6 +13,6 @@ FactoryGirl.define do
     first_exit '12:00'
     second_entry '14:30'
     day Date.today
-    user User.last
+    association :user, factory: :user
   end
 end
