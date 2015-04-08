@@ -1,20 +1,10 @@
 module ApplicationHelper
   def flash_class(type)
-    case type
-    when 'success' then 'success'
-    when 'error' then 'danger'
-    when 'notice' then 'info'
-    when 'alert' then  'warning'
-    end
+    flashes[type]['class']
   end
 
   def flash_icon(type)
-    case type
-    when 'success' then 'fa-check'
-    when 'error' then 'fa-ban'
-    when 'notice' then 'fa-info'
-    when 'alert' then 'fa-warning'
-    end
+    flashes[type]['icon']
   end
 
   def message(messages)
@@ -31,5 +21,23 @@ module ApplicationHelper
 
   def popover(content)
     "popover data-toggle='popover' data-content='#{content}'".html_safe
+  end
+
+  private
+
+  def flashes
+    @flashes ||= {
+      'success' => class_and_icon('success', 'fa-check'),
+      'error'   => class_and_icon('danger', 'fa-ban'),
+      'notice'  => class_and_icon('info', 'fa-info'),
+      'alert'   => class_and_icon('warning', 'fa-warning')
+    }
+  end
+
+  def class_and_icon(cls, icon)
+    {
+      'class' => cls,
+      'icon' => icon
+    }
   end
 end
