@@ -61,12 +61,12 @@ describe ApplicationHelper do
     end
 
     context 'when param is not empty' do
-      let(:messages) { [ 'msg1', 'msg2' ] }
+      let(:messages) {  %w(msg1 msg2) }
       let(:msg1)     { '<p>msg1</p>' }
       let(:msg2)     { '<p>msg2</p>' }
 
       it 'returns a html safe callout callout-danger class within p' do
-        [ msg1, msg2 ].each do |msg|
+        [msg1, msg2].each do |msg|
           expect(message(messages)).to match msg
         end
       end
