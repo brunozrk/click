@@ -4,6 +4,8 @@ $(document).ready(function(){
     showInputs: false,
     minuteStep: 1,
     defaultTime: false
+  }).on('blur', function(){
+    $(this).timepicker("hideWidget");
   });
 
   $(".datepicker").datepicker({
