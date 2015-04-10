@@ -2,10 +2,14 @@ $(document).ready(function(){
   $(".timepicker").timepicker({
     showMeridian: false,
     showInputs: false,
-    minuteStep: 1,
+    minuteStep: 5,
     defaultTime: false
-  }).on('blur', function(){
-    $(this).timepicker("hideWidget");
+  }).on('focus', function(){
+    $('.timepicker').not(this).timepicker('hideWidget');
+  });
+
+  $('#report_notice').on('focus', function(){
+    $('.timepicker').timepicker('hideWidget');
   });
 
   $(".datepicker").datepicker({
@@ -15,4 +19,10 @@ $(document).ready(function(){
   });
 
   $('[popover]').popover({ trigger: "hover" });
+});
+
+$(document).click(function(){
+  if(event.target.classList.contains('timepicker') != true){
+    $('.timepicker').timepicker('hideWidget');
+  }
 });
