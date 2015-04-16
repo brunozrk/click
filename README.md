@@ -1,4 +1,4 @@
-# Click [![Code Climate](https://codeclimate.com/github/brunozrk/click/badges/gpa.svg)](https://codeclimate.com/github/brunozrk/click) [![Build Status](https://travis-ci.org/brunozrk/click.svg?branch=master)](https://travis-ci.org/brunozrk/click)
+# Click [![Code Climate](https://codeclimate.com/github/brunozrk/click/badges/gpa.svg)](https://codeclimate.com/github/brunozrk/click) [![Build Status](https://travis-ci.org/brunozrk/click.svg?branch=master)](https://travis-ci.org/brunozrk/click) [![Test Coverage](https://codeclimate.com/github/brunozrk/click/badges/coverage.svg)](https://codeclimate.com/github/brunozrk/click)
 
 
 *Click* tem como objetivo oferecer uma ferramenta web para controlar o saldo de horas de trabalho. Acesse em www.clickhoras.com
