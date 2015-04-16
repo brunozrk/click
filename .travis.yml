@@ -3,4 +3,5 @@ rvm:
   - 2.2.1
 addons:
   code_climate:
-    repo_token: <%= ENV["CODECLIMATE_REPO_TOKEN"] %>
+    repo_token:
+      secure: "NSdlTlGvw7yvoquB45z3gSAmhwVkFDMWS5xXzQqAHMwHA7AhnVgYzMUsvEMHoqHORDhB1JsvHg01LixAiCVs9mD8fXui8jgqgIPk0m7KBbWTmDFWTqgXclmRcNg61m5yeILI+pllPO1mbSZmnCPobojO3SxkXGcFmhC8DAeFw5o="
