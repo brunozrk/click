@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :first_name, :last_name, :hours_per_day, presence: true
-  validates :hours_per_day, inclusion: { in: 1..24 }
+  validates :hours_per_day, inclusion: { in: (1..24).map{|h| hour = h < 10 ? "0#{h}" : h; "#{hour}:00"} }
 
   def total_balance
     nearest_timetable = timetables.first
