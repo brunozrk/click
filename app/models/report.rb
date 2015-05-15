@@ -2,6 +2,7 @@ class Report < ActiveRecord::Base
   belongs_to :user
 
   validates :day, :remote, presence: true
+  validates :day, uniqueness: { scope: :user_id }
   validate :validate_entry_exit_order
 
   default_scope { order('day DESC') }
