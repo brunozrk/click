@@ -2,8 +2,6 @@ class Report < ActiveRecord::Base
   belongs_to :user
 
   validates :day, :remote, presence: true
-  validates :day, uniqueness: { scope: :user_id }
-
   validate :validate_entry_exit_order
 
   default_scope { order('day DESC') }
@@ -12,9 +10,11 @@ class Report < ActiveRecord::Base
   POSITIVE = true
 
   def worked
-    first_total = time_diff(first_entry, first_exit)
+    first_total  = time_diff(first_entry, first_exit)
     second_total = time_diff(second_entry, second_exit)
-    first_total + second_total + timeit(remote).seconds_since_midnight
+    third_total  = time_diff(third_entry, third_exit)
+
+    first_total + second_total + third_total + timeit(remote).seconds_since_midnight
   end
 
   def balance
@@ -37,9 +37,12 @@ class Report < ActiveRecord::Base
   private
 
   def validate_entry_exit_order
-    return unless any_higher?(first_entry, 3) ||
-                  any_higher?(first_exit, 2) ||
-                  any_higher?(second_entry, 1)
+    return unless any_higher?(first_entry, 5)  ||
+                  any_higher?(first_exit, 4)   ||
+                  any_higher?(second_entry, 3) ||
+                  any_higher?(second_exit, 2)  ||
+                  any_higher?(third_entry, 1)
+
     errors.add(:base, I18n.t('flash.reports.validations.entry_exit_order'))
   end
 
@@ -58,13 +61,16 @@ class Report < ActiveRecord::Base
       timeit(first_entry),
       timeit(first_exit),
       timeit(second_entry),
-      timeit(second_exit)
+      timeit(second_exit),
+      timeit(third_entry),
+      timeit(third_exit)
     ]
   end
 
   def time_diff(entry, exit)
     entry = timeit(entry)
-    exit = timeit(exit)
+    exit  = timeit(exit)
+
     if exit && entry
       exit - entry
     else
@@ -72,16 +78,16 @@ class Report < ActiveRecord::Base
     end
   end
 
-  def timeit(value)
+  def timeit value
     return if value.nil?
     Time.parse(value) unless value.empty?
   end
 
-  def balance_diff(hours_per_day)
+  def balance_diff hours_per_day
     (worked - hours_per_day).abs
   end
 
-  def positive_balance?(hours_per_day)
+  def positive_balance? hours_per_day
     hours_per_day <= worked
   end
 end
