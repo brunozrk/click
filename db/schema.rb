@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511134855) do
+ActiveRecord::Schema.define(version: 20150515131047) do
 
   create_table "reports", force: :cascade do |t|
     t.string   "first_entry"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20150511134855) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "working_day",  default: true
+    t.string   "third_entry"
+    t.string   "third_exit"
   end
 
   add_index "reports", ["user_id"], name: "index_reports_on_user_id"
