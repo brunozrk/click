@@ -37,23 +37,9 @@ class Report < ActiveRecord::Base
   private
 
   def validate_entry_exit_order
-    return unless any_higher?(first_entry, 5)  ||
-                  any_higher?(first_exit, 4)   ||
-                  any_higher?(second_entry, 3) ||
-                  any_higher?(second_exit, 2)  ||
-                  any_higher?(third_entry, 1)
+    return if times.compact == times.compact.sort
 
     errors.add(:base, I18n.t('flash.reports.validations.entry_exit_order'))
-  end
-
-  def any_higher?(value, last)
-    last_fills = times.last(last).compact
-    return true if require_previous_fill?(value, last_fills)
-    last_fills.any? { |x| x < timeit(value) }
-  end
-
-  def require_previous_fill?(value, last_fills)
-    value.blank? && !last_fills.empty?
   end
 
   def times
