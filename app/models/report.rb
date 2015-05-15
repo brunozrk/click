@@ -20,7 +20,7 @@ class Report < ActiveRecord::Base
   def balance
     return { time: worked, sign: POSITIVE } unless working_day
 
-    hours_per_day = user.hours_per_day.hour
+    hours_per_day = Time.parse(user.hours_per_day).seconds_since_midnight
     time, sign = away ?  [hours_per_day, NEGATIVE] : [balance_diff(hours_per_day), positive_balance?(hours_per_day)]
 
     { time: time, sign: sign }

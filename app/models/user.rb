@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  HOURS_IN_GROUPS_OF_FIVE_MINUTES = (Time.now.beginning_of_day.to_i..Time.now.end_of_day.to_i).
+    to_a.in_groups_of(5.minutes).collect(&:first).collect { |t| Time.at(t).strftime("%H:%M") }
+
   has_many :reports
   has_many :timetables
 
@@ -8,7 +11,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :first_name, :last_name, :hours_per_day, presence: true
-  validates :hours_per_day, inclusion: { in: 1..24 }
+  validates :hours_per_day, inclusion: { in: HOURS_IN_GROUPS_OF_FIVE_MINUTES }
 
   def total_balance
     nearest_timetable = timetables.first

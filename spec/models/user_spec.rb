@@ -20,7 +20,7 @@ describe User do
     end
 
     context 'inclusion' do
-      it { expect(subject).to validate_inclusion_of(:hours_per_day).in_range(1..24) }
+      it { expect(subject).to validate_inclusion_of(:hours_per_day).in_array(User::HOURS_IN_GROUPS_OF_FIVE_MINUTES) }
     end
   end
 
