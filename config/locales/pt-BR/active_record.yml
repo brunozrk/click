@@ -24,5 +24,6 @@ pt-BR:
         day: Dia
         away: Faltou?
         working_day: Dia Útil?
+        working_day_popover: Dia não útil não obriga você a cumprir a carga horária diária (feriados, finais de semana, etc)
       timetable:
         closing_day: Dia do fechamento

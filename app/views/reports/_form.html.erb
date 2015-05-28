@@ -51,7 +51,7 @@
             <%= f.input :working_day, collection: { 'Sim' => true, 'Não' => false},
                                       include_blank: false,
                                       input_html: { popover: '',
-                                                    data: { content: 'Dia não útil não obriga você a cumprir a carga horária diária (Ex: Feriados, Finais de semana, etc)',
+                                                    data: { content: I18n.t('activerecord.attributes.report.working_day_popover'),
                                                             placement: 'top',
                                                             toggle: 'popover' } },
                                       wrapper_html: { class: 'col-xs-3' } %>
