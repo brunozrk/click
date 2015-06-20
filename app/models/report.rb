@@ -35,6 +35,14 @@ class Report < ActiveRecord::Base
     last ? last.day : Date.today
   end
 
+  def entries
+    [ first_entry, second_entry, third_entry ]
+  end
+
+  def exits
+    [ first_exit, second_exit, third_exit ]
+  end
+
   private
 
   def validate_entry_exit_order
