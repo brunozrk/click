@@ -1,4 +1,3 @@
-require 'pry'
 class ReportPresenter < Burgundy::Item
 
   def estimated_time(index)
