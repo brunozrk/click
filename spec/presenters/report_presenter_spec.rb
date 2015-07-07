@@ -3,20 +3,46 @@ require 'rails_helper'
 describe ReportPresenter do
   let(:presenter) { described_class.new(report) }
 
-  describe '#estimated_second_exit' do
-    context 'when second_exit is NOT blank' do
-      let(:report) { FactoryGirl.build(:report) }
-      it { expect(presenter.estimated_second_exit).to eq report.second_exit }
+  describe '#estimated_time' do
+    context 'for first exit' do
+      context 'when first_exit is blank and estimated_exit exists' do
+        let(:report) { FactoryGirl.build(:report_without_first_exit) }
+        it { expect(presenter.estimated_time(:first).squish).to include '16:00' }
+      end
+
+      context 'when first_exit and estimated_exit are blank' do
+        let(:report) { FactoryGirl.build(:report_without_first_exit, first_entry: '') }
+        it { expect(presenter.estimated_time(:first)).to be_nil}
+      end
     end
 
-    context 'when second_exit is blank and estimated_exit exists' do
-      let(:report) { FactoryGirl.build(:report_without_second_exit) }
-      it { expect(presenter.estimated_second_exit.squish).to include '18:30' }
+    context 'for second exit' do
+      context 'when second_exit is NOT blank' do
+        let(:report) { FactoryGirl.build(:report) }
+        it { expect(presenter.estimated_time(:second)).to eq report.second_exit }
+      end
+
+      context 'when second_exit is blank and estimated_exit exists' do
+        let(:report) { FactoryGirl.build(:report_without_second_exit) }
+        it { expect(presenter.estimated_time(:second).squish).to include '18:30' }
+      end
+
+      context 'when second_exit and estimated_exit are blank' do
+        let(:report) { FactoryGirl.build(:report_without_second_exit, second_entry: '') }
+        it { expect(presenter.estimated_time(:second)).to be_nil}
+      end
     end
 
-    context 'when second_exit and estimated_exit are blank' do
-      let(:report) { FactoryGirl.build(:report_without_second_exit, second_entry: '') }
-      it { expect(presenter.estimated_second_exit).to eq nil }
+    context 'for third exit' do
+      context 'when third_exit is blank and estimated_exit exists' do
+        let(:report) { FactoryGirl.build(:report_without_third_exit) }
+        it { expect(presenter.estimated_time(:third).squish).to include '19:30' }
+      end
+
+      context 'when third_exit and estimated_exit are blank' do
+        let(:report) { FactoryGirl.build(:report_without_third_exit, third_entry: '') }
+        it { expect(presenter.estimated_time(:third)).to be_nil}
+      end
     end
   end
 
