@@ -81,6 +81,8 @@ class ReportsController < ApplicationController
       :first_exit,
       :second_entry,
       :second_exit,
+      :third_entry,
+      :third_exit,
       :remote,
       :notice,
       :day,

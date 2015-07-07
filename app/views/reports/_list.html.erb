@@ -8,6 +8,8 @@
           <th>Primeira Saída</th>
           <th>Segunda Entrada</th>
           <th>Segunda Saída</th>
+          <th>Terceira Entrada</th>
+          <th>Terceira Saída</th>
           <th>Remoto</th>
           <th>Total</th>
           <th>Saldo</th>
@@ -19,9 +21,11 @@
         <tr>
           <td><%= r.day.strftime('%d/%m/%Y') %></td>
           <td><%= r.first_entry %></td>
-          <td><%= r.first_exit %></td>
+          <td><%= r.estimated_time(:first) %></td>
           <td><%= r.second_entry %></td>
-          <td><%= r.last_exit %></td>
+          <td><%= r.estimated_time(:second) %></td>
+          <td><%= r.third_entry %></td>
+          <td><%= r.estimated_time(:third) %></td>
           <td><%= r.remote %></td>
           <td><%= format_time(r.worked) %></td>
           <td>
