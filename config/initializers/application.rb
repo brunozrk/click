@@ -1,4 +1,4 @@
-Rails.env.on(:any) do |config|
+Rails.env.on(:any) do
   config.time_zone = 'Brasilia'
 
   config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
