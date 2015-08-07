@@ -13,11 +13,13 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'reports/export', to: 'reports#export'
-  resources :reports
+  resources :reports do
+    get 'export', on: :collection
+  end
 
   resources :timetables
 
-  resources :site, only: :index
-  get 'como-funciona', action: 'how_it_works', controller: 'site', as: 'how_it_works'
+  resources :site, only: :index do
+    get 'como-funciona', action: 'how_it_works', as: 'how_it_works', on: :collection
+  end
 end
